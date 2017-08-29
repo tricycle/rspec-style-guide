@@ -392,19 +392,19 @@ In case your example doesn’t need any description or the description is redund
 #### Bad Example
 ``` ruby
 it "should be valid" do
-  expect(@user).to be_valid
+  expect(user).to be_valid
 end
 ```
 
 #### Good Example
 can be replaced with
 ``` ruby
-specify { expect(@user).to be_valid }
+specify { expect(user).to be_valid }
 ```
 and only if you can use the `is_expected` syntax this can be written even better as
 (This is not always possible -e.g raise_error expectations-)
 ``` ruby
-subject { @user }
+subject { user }
 
 it { is_expected.to be_valid }
 ```
