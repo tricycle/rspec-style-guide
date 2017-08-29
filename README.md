@@ -1,5 +1,7 @@
 # The RSpec Style Guide
 
+Forked from [Reachlocal Rspec Style Guide](https://github.com/reachlocal/rspec-style-guide)
+
 This RSpec style guide outlines our recommended best practices so that our
 developers can write code that can be maintained by other (future) developers.
 This is meant to be a style guide that reflects real-world usage, as well as a
@@ -381,6 +383,30 @@ end
 context 'when display name is not present' do
   it 'returns nil'
 end
+```
+
+### `specify` vs `it` for examples without description
+
+In case your example doesn’t need any description or the description is redundant.
+
+#### Bad Example
+``` ruby
+it "should be valid" do
+  expect(@user).to be_valid
+end
+```
+
+#### Good Example
+can be replaced with
+``` ruby
+specify { expect(@user).to be_valid }
+```
+and only if you can use the `is_expected` syntax this can be written even better as
+(This is not always possible -e.g raise_error expectations-)
+``` ruby
+subject { @user }
+
+it { is_expected.to be_valid }
 ```
 
 ### `describe` block naming
